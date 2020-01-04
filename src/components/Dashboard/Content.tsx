@@ -5,6 +5,7 @@ import Header from "./Header";
 import Spinner from "../Spinner";
 import api from "../../api";
 import { IParseResult } from "../../api/parse";
+import Viewer from "../Viewer";
 
 const topSpacing = "3em";
 
@@ -30,6 +31,9 @@ const ViewArea = styled.section`
   position: relative;
   height: 100%;
   flex: 1;
+  margin-top: 2em;
+  border-top: 0.1em solid ${props => props.theme.colors.gray300};
+  padding: 1em 0.5em;
 `;
 
 const PositionMessage = styled.div`
@@ -80,6 +84,7 @@ const Content: FC = () => {
               Add a URL above to see result here.
             </PositionMessage>
           )}
+          {!loading && !error && result && <Viewer data={result} />}
         </ViewArea>
       </Container>
     </Main>
