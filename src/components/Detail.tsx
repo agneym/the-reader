@@ -1,4 +1,4 @@
-import React, { FC, ComponentType } from "react";
+import React, { FC, ComponentType, ReactNode } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -22,7 +22,7 @@ const Text = styled.dd`
 interface IProps {
   icon: ComponentType;
   label: string;
-  text: string | null;
+  text: ReactNode;
 }
 
 const Detail: FC<IProps> = ({ icon: Icon, text, label }) => {

@@ -42,7 +42,15 @@ const Viewer: FC<IProps> = ({ data }) => {
             label="Word Count"
             text={data.word_count.toString()}
           />
-          <Detail icon={Link} label="Domain" text={data.domain} />
+          <Detail
+            icon={Link}
+            label="Domain"
+            text={
+              <a href={data.domain} target="_blank" rel="noopener noreferrer">
+                {data.domain}
+              </a>
+            }
+          />
         </DescriptionList>
       </Header>
       {data.content ? (
