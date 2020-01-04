@@ -12,6 +12,8 @@ const Main = styled.main`
   box-shadow: ${props => props.theme.boxShadows.xl};
 `;
 
+const ViewArea = styled.section``;
+
 const Content: FC = () => {
   const [loading, setLoading] = useState(false);
   const handleView = (url: string) => {
@@ -21,6 +23,7 @@ const Content: FC = () => {
   return (
     <Main>
       <Header loading={loading} onView={handleView} />
+      <ViewArea></ViewArea>
     </Main>
   );
 };
