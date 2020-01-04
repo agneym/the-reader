@@ -3,7 +3,7 @@ import Mercury from "@postlight/mercury-parser";
 export async function handler(event) {
   const parameters = event.queryStringParameters;
   const url = parameters.q;
-  console.log(url);
+
   if (!url) {
     return {
       statusCode: 400,
