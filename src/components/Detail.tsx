@@ -1,6 +1,8 @@
 import React, { FC, ComponentType, ReactNode } from "react";
 import styled from "styled-components";
 
+import media from "../utils/media";
+
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -12,6 +14,10 @@ const Container = styled.div`
 
   &:last-child {
     margin-right: 0;
+  }
+
+  ${media.phone} {
+    margin: 0.5em 0;
   }
 `;
 

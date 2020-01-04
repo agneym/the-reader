@@ -9,6 +9,7 @@ import Spinner from "../Spinner";
 import api from "../../api";
 import { IParseResult } from "../../api/parse";
 import Viewer from "../Viewer";
+import media from "../../utils/media";
 
 const topSpacing = "3em";
 
@@ -17,6 +18,10 @@ const Main = styled.main`
   width: 100%;
   max-width: 1000px;
   padding-top: calc(${props => props.theme.nav.height} + ${topSpacing});
+
+  ${media.phone} {
+    padding-top: calc(${props => props.theme.nav.height} + 0.5em);
+  }
 `;
 
 const Container = styled.div`

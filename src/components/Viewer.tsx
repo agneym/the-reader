@@ -4,6 +4,7 @@ import { Calendar, Feather, Sliders, Link } from "react-feather";
 
 import { IParseResult } from "../api/parse";
 import Detail from "./Detail";
+import media from "../utils/media";
 
 interface IProps {
   data: IParseResult;
@@ -21,6 +22,10 @@ const Header = styled.header`
 
 const DescriptionList = styled.dl`
   display: flex;
+
+  ${media.phone} {
+    flex-direction: column;
+  }
 `;
 
 const Viewer: FC<IProps> = ({ data }) => {
