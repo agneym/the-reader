@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     font-size: 100%;
     min-height: 100vh;
+    overscroll-behavior: none;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: ${props => props.theme.fonts.heading};
