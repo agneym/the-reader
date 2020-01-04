@@ -29,17 +29,19 @@ const StyledButton = styled(Button)`
 `;
 
 interface IProps {
+  disable?: boolean;
   url: string;
   setUrl: (url: string) => void;
 }
 
-const AddURL: FC<IProps> = ({ url, setUrl }) => {
+const AddURL: FC<IProps> = ({ disable = false, url, setUrl }) => {
   return (
     <Container>
       <StyledInput
         type="url"
         name="url"
         id="url"
+        disabled={disable}
         full
         placeholder="Add URL"
         value={url}
@@ -47,7 +49,7 @@ const AddURL: FC<IProps> = ({ url, setUrl }) => {
           setUrl(event.target.value)
         }
       />
-      <StyledButton styleType="primary" type="submit">
+      <StyledButton styleType="primary" type="submit" disabled={disable}>
         View
       </StyledButton>
     </Container>

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 
 import Header from "./Header";
@@ -13,9 +13,14 @@ const Main = styled.main`
 `;
 
 const Content: FC = () => {
+  const [loading, setLoading] = useState(false);
+  const handleView = (url: string) => {
+    setLoading(true);
+    console.log(url);
+  };
   return (
     <Main>
-      <Header />
+      <Header loading={loading} onView={handleView} />
     </Main>
   );
 };

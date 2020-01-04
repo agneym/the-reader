@@ -6,10 +6,11 @@ import AddURL from "./AddURL";
 const Container = styled.header``;
 
 interface IProps {
+  loading: boolean;
   onView: (url: string) => void;
 }
 
-const Header: FC<IProps> = ({ onView }) => {
+const Header: FC<IProps> = ({ loading, onView }) => {
   const [url, setUrl] = useState("");
 
   const handleSubmit = (event: FormEvent) => {
@@ -19,7 +20,7 @@ const Header: FC<IProps> = ({ onView }) => {
   return (
     <Container>
       <form onSubmit={handleSubmit}>
-        <AddURL url={url} setUrl={setUrl} />
+        <AddURL url={url} setUrl={setUrl} disable={loading} />
       </form>
     </Container>
   );
