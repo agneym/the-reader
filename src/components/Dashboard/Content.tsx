@@ -42,6 +42,7 @@ const PositionMessage = styled.div`
   left: 50%;
   transform: translate(-50%);
   margin: 0;
+  text-align: center;
   color: ${props => props.theme.colors.gray700};
 `;
 
@@ -81,7 +82,8 @@ const Content: FC = () => {
           )}
           {!result && !loading && (
             <PositionMessage as="p">
-              Add a URL above to see result here.
+              Add a URL above to see result here. <br />
+              For eg. https://en.wikipedia.org/wiki/Special:Random
             </PositionMessage>
           )}
           {!loading && !error && result && <Viewer data={result} />}
