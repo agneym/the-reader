@@ -1,14 +1,50 @@
 import React, { FC } from "react";
+import styled from "styled-components";
+import { Calendar, Feather, Sliders, Link } from "react-feather";
+
 import { IParseResult } from "../api/parse";
+import Detail from "./Detail";
 
 interface IProps {
   data: IParseResult;
 }
 
+const Heading = styled.h1`
+  font-size: 3em;
+  line-height: 1.5;
+  margin: 0;
+`;
+
+const Header = styled.header`
+  margin-bottom: 3em;
+`;
+
+const DescriptionList = styled.dl`
+  display: flex;
+`;
+
 const Viewer: FC<IProps> = ({ data }) => {
   return (
     <article>
-      <h1>{data.title}</h1>
+      <Header>
+        <Heading>{data.title}</Heading>
+        <DescriptionList>
+          {data.date_published && (
+            <Detail
+              icon={Calendar}
+              label="Date Published"
+              text={new Date(data.date_published).toLocaleString()}
+            />
+          )}
+          <Detail icon={Feather} label="Author" text={data.author} />
+          <Detail
+            icon={Sliders}
+            label="Word Count"
+            text={data.word_count.toString()}
+          />
+          <Detail icon={Link} label="Domain" text={data.domain} />
+        </DescriptionList>
+      </Header>
       {data.content ? (
         <div dangerouslySetInnerHTML={{ __html: data.content }}></div>
       ) : (

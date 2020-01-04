@@ -33,7 +33,7 @@ const ViewArea = styled.section`
   flex: 1;
   margin-top: 2em;
   border-top: 0.1em solid ${props => props.theme.colors.gray300};
-  padding: 1em 0.5em;
+  padding: 0.5em;
 `;
 
 const PositionMessage = styled.div`
