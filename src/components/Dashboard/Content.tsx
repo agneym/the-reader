@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Header from "./Header";
 import Spinner from "../Spinner";
 import api from "../../api";
+import { IParseResult } from "../../api/parse";
 
 const topSpacing = "3em";
 
@@ -48,13 +49,15 @@ const SpinnerContainer = styled(PositionMessage)`
 
 const Content: FC = () => {
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState(null);
+  const [result, setResult] = useState<IParseResult | null>(null);
+  const [error, setError] = useState<Error | null>(null);
   const handleView = (url: string) => {
     setLoading(true);
     api
       .parse(url)
-      .then(console.log)
+      .then(response => {
+        setResult(response.data);
+      })
       .catch(error => {
         setError(error);
       })
