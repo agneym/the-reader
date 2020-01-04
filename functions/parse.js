@@ -11,9 +11,10 @@ export async function handler(event) {
     };
   }
   try {
+    const response = await Mercury.parse(url);
     return {
       statusCode: 200,
-      body: JSON.stringify({ data: "Hello" }),
+      body: JSON.stringify({ data: response }),
     };
   } catch (err) {
     return {

@@ -56,7 +56,6 @@ const Content: FC = () => {
       .parse(url)
       .then(console.log)
       .catch(error => {
-        console.log(error);
         setError(error);
       })
       .finally(() => {
