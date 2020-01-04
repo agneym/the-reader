@@ -8,6 +8,7 @@ import { IParseResult } from "../../api/parse";
 import Viewer from "../Viewer";
 import { useHistory } from "react-router";
 import { stringify } from "qs";
+import { Link } from "react-router-dom";
 
 const topSpacing = "3em";
 
@@ -92,7 +93,14 @@ const Content: FC = () => {
           {!result && !loading && (
             <PositionMessage as="p">
               Add a URL above to see result here. <br />
-              For eg. https://en.wikipedia.org/wiki/Special:Random
+              For eg.{" "}
+              <Link
+                to={`/?${stringify({
+                  q: "https://en.wikipedia.org/wiki/Special:Random",
+                })}`}
+              >
+                https://en.wikipedia.org/wiki/Special:Random
+              </Link>
             </PositionMessage>
           )}
           {!loading && !error && result && <Viewer data={result} />}
