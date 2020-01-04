@@ -1,29 +1,33 @@
 import React, { FC, useState, FormEvent, useEffect } from "react";
 import styled from "styled-components";
+import { useLocation, useHistory } from "react-router";
+import { stringify } from "qs";
 
 import AddURL from "./AddURL";
-import { useLocation } from "react-router";
 
 const Container = styled.header``;
 
 interface IProps {
   loading: boolean;
-  onView: (url: string) => void;
 }
 
-const Header: FC<IProps> = ({ loading, onView }) => {
+const Header: FC<IProps> = ({ loading }) => {
   const location = useLocation();
+  const history = useHistory();
   const [url, setUrl] = useState("");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const url = searchParams.get("q");
     setUrl(url ?? "");
-  }, []);
+  }, [location.search]);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    onView(url);
+    history.push({
+      pathname: "/",
+      search: stringify({ q: url }),
+    });
   };
   return (
     <Container>

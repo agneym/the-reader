@@ -1,14 +1,14 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import styled from "styled-components";
+import { useLocation } from "react-router";
+import { stringify } from "qs";
+import { Link } from "react-router-dom";
 
 import Header from "./Header";
 import Spinner from "../Spinner";
 import api from "../../api";
 import { IParseResult } from "../../api/parse";
 import Viewer from "../Viewer";
-import { useHistory } from "react-router";
-import { stringify } from "qs";
-import { Link } from "react-router-dom";
 
 const topSpacing = "3em";
 
@@ -60,30 +60,35 @@ const Content: FC = () => {
   const [result, setResult] = useState<IParseResult | null>(null);
   const [error, setError] = useState<Error | null>(null);
 
-  const history = useHistory();
+  const location = useLocation();
 
-  const handleView = (url: string) => {
-    setLoading(true);
-    history.push({
-      pathname: "/",
-      search: stringify({ q: url }),
-    });
-    api
-      .parse(url)
-      .then(response => {
-        setResult(response.data);
-      })
-      .catch(error => {
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+  useEffect(() => {
+    const handleView = (url: string) => {
+      setLoading(true);
+      api
+        .parse(url)
+        .then(response => {
+          setResult(response.data);
+        })
+        .catch(error => {
+          setError(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    };
+
+    const searchParams = new URLSearchParams(location.search);
+    const url = searchParams.get("q");
+    if (url) {
+      handleView(url);
+    }
+  }, [location.search]);
+
   return (
     <Main>
       <Container>
-        <Header loading={loading} onView={handleView} />
+        <Header loading={loading} />
         <ViewArea>
           {loading && (
             <SpinnerContainer>
