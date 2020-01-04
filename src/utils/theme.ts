@@ -6,12 +6,18 @@ const colors = {
   gray300: `#e2e8f0`,
 };
 
+const fonts = {
+  main: `'Lato', sans-serif`,
+  heading: `'Source Sans Pro', sans-serif`,
+};
+
 const theme = {
   nav: {
     height: "4em",
   },
   boxShadows,
   colors,
+  fonts,
 };
 
 export default theme;

@@ -8,6 +8,7 @@ const Nav = styled.nav`
   box-shadow: ${props => props.theme.boxShadows.lg};
   z-index: 50;
   background-color: #ffffff;
+  top: 0;
 `;
 
 const Navbar: FC = () => {
