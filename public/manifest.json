@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "The Reader",
+  "name": "A Reader application generated from URL",
   "icons": [
     {
       "src": "favicon.ico",
@@ -21,5 +21,12 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#667eea",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "url": "q"
+    }
+  }
 }
