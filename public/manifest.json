@@ -1,6 +1,6 @@
 {
-  "short_name": "The Reader",
-  "name": "A Reader application generated from URL",
+  "short_name": "reader",
+  "name": "The Reader",
   "icons": [
     {
       "src": "favicon.ico",
