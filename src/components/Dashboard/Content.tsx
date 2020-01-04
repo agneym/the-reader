@@ -91,6 +91,7 @@ const Content: FC = () => {
         });
     };
 
+    alert(window.location.href);
     const searchParams = new URLSearchParams(location.search);
     const url = searchParams.get("q");
     if (url) {
