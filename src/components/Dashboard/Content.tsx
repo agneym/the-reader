@@ -6,6 +6,8 @@ import Spinner from "../Spinner";
 import api from "../../api";
 import { IParseResult } from "../../api/parse";
 import Viewer from "../Viewer";
+import { useHistory } from "react-router";
+import { stringify } from "qs";
 
 const topSpacing = "3em";
 
@@ -56,8 +58,15 @@ const Content: FC = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<IParseResult | null>(null);
   const [error, setError] = useState<Error | null>(null);
+
+  const history = useHistory();
+
   const handleView = (url: string) => {
     setLoading(true);
+    history.push({
+      pathname: "/",
+      search: stringify({ q: url }),
+    });
     api
       .parse(url)
       .then(response => {
