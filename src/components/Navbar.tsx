@@ -1,6 +1,9 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { Twitter } from "react-feather";
+import { Link } from "react-router-dom";
+
+import namePath from "../images/name-with-logo.png";
 
 const Nav = styled.nav`
   width: 100%;
@@ -16,10 +19,16 @@ const Nav = styled.nav`
   justify-content: space-between;
 `;
 
+const Image = styled.img`
+  height: 2em;
+`;
+
 const Navbar: FC = () => {
   return (
     <Nav>
-      <p>The Reader</p>
+      <Link to="/">
+        <Image src={namePath} alt="The Reader - Link to homepage" />
+      </Link>
       <div>
         <a
           href="https://twitter.com/agneymenon"

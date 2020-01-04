@@ -55,6 +55,14 @@ const SpinnerContainer = styled(PositionMessage)`
   color: ${props => props.theme.colors.primary};
 `;
 
+const StyledLink = styled(Link)`
+  color: ${props => props.theme.colors.gray700};
+
+  &:visited {
+    color: ${props => props.theme.colors.gray700};
+  }
+`;
+
 const Content: FC = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<IParseResult | null>(null);
@@ -95,20 +103,25 @@ const Content: FC = () => {
               <Spinner />
             </SpinnerContainer>
           )}
-          {!result && !loading && (
+          {!result && !loading && !error && (
             <PositionMessage as="p">
               Add a URL above to see result here. <br />
               For eg.{" "}
-              <Link
+              <StyledLink
                 to={`/?${stringify({
                   q: "https://en.wikipedia.org/wiki/Special:Random",
                 })}`}
               >
                 https://en.wikipedia.org/wiki/Special:Random
-              </Link>
+              </StyledLink>
             </PositionMessage>
           )}
           {!loading && !error && result && <Viewer data={result} />}
+          {error && (
+            <PositionMessage>
+              Unexpected Error. Please check and try again.
+            </PositionMessage>
+          )}
         </ViewArea>
       </Container>
     </Main>
