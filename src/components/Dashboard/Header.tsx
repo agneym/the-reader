@@ -1,12 +1,16 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
+import AddURL from "./AddURL";
+
 const Container = styled.header``;
 
 const Header: FC = () => {
   return (
     <Container>
-      <p>Header</p>
+      <form>
+        <AddURL />
+      </form>
     </Container>
   );
 };
