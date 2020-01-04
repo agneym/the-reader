@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import Header from "./Header";
 import Spinner from "../Spinner";
@@ -30,18 +30,24 @@ const ViewArea = styled.section`
   flex: 1;
 `;
 
-const SpinnerContainer = styled.div`
-  height: 3em;
-  width: 3em;
-  color: ${props => props.theme.colors.primary};
+const PositionMessage = styled.div`
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%);
+  margin: 0;
+  color: ${props => props.theme.colors.gray700};
+`;
+
+const SpinnerContainer = styled(PositionMessage)`
+  height: 3em;
+  width: 3em;
+  color: ${props => props.theme.colors.primary};
 `;
 
 const Content: FC = () => {
   const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null);
   const handleView = (url: string) => {
     setLoading(true);
   };
@@ -54,6 +60,11 @@ const Content: FC = () => {
             <SpinnerContainer>
               <Spinner />
             </SpinnerContainer>
+          )}
+          {!result && !loading && (
+            <PositionMessage as="p">
+              Add a URL above to see result here.
+            </PositionMessage>
           )}
         </ViewArea>
       </Container>
