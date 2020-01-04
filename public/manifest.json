@@ -26,7 +26,9 @@
     "action": "/",
     "method": "GET",
     "params": {
-      "url": "q"
+      "title": "name",
+      "text": "description",
+      "url": "link"
     }
   }
 }
