@@ -1,7 +1,13 @@
-import React, { FC } from "react";
+import React, { FC, Fragment } from "react";
+
+import Navbar from "../components/Navbar";
 
 const Dashboard: FC = () => {
-  return <p>Dashboard</p>;
+  return (
+    <Fragment>
+      <Navbar />
+    </Fragment>
+  );
 };
 
 export default Dashboard;
