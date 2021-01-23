@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import "twin.macro";
 import { Calendar, Feather, Sliders, Link } from "react-feather";
 
 import { IParseResult } from "../api/parse";
@@ -59,7 +60,10 @@ const Viewer: FC<IProps> = ({ data }) => {
         </DescriptionList>
       </Header>
       {data.content ? (
-        <div dangerouslySetInnerHTML={{ __html: data.content }}></div>
+        <div
+          tw="prose"
+          dangerouslySetInnerHTML={{ __html: data.content }}
+        ></div>
       ) : (
         <p>We failed to parse this URL. The Sadness :(</p>
       )}
