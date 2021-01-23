@@ -61,7 +61,7 @@ const Viewer: FC<IProps> = ({ data }) => {
       </Header>
       {data.content ? (
         <div
-          tw="prose"
+          tw="prose lg:prose-xl"
           dangerouslySetInnerHTML={{ __html: data.content }}
         ></div>
       ) : (
